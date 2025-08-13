@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import recipesJson from "../data.json"; 
 
-export default function Homepage() {
+export default function HomePage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
