@@ -173,7 +173,7 @@ export default function AddRecipeForm({ onAdd }) {
   };
 
   return (
-    <div className="p-6 max-w-xl mx-auto bg-white rounded shadow">
+    <div className="p-6 max-w-xl mx-auto bg-white rounded shadow md:max-w-2xl">
       <h1 className="text-2xl font-bold mb-4">Add New Recipe</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
