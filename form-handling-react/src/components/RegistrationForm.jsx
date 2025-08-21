@@ -1,33 +1,24 @@
 import React, { useState } from "react";
 
 const RegistrationForm = () => {
-  // Step 1: Set up states for controlled inputs
-  const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
+  // Separate states for each field
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
 
-  // Step 2: Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
-
-  // Step 3: Handle form submission with validation
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.username || !form.email || !form.password) {
+    // Basic validation
+    if (!username || !email || !password) {
       setErrors("All fields are required!");
       return;
     }
 
     setErrors("");
     alert("Form submitted successfully ✅");
-    console.log(form);
+    console.log({ username, email, password });
   };
 
   return (
@@ -40,9 +31,8 @@ const RegistrationForm = () => {
         <label>Username:</label>
         <input
           type="text"
-          name="username"
-          value={form.username}
-          onChange={handleChange}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter username"
         />
       </div>
@@ -51,9 +41,8 @@ const RegistrationForm = () => {
         <label>Email:</label>
         <input
           type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter email"
         />
       </div>
@@ -62,9 +51,8 @@ const RegistrationForm = () => {
         <label>Password:</label>
         <input
           type="password"
-          name="password"
-          value={form.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter password"
         />
       </div>
