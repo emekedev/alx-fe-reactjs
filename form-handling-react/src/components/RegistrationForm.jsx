@@ -11,15 +11,41 @@ const RegistrationForm = () => {
     e.preventDefault();
 
     // Basic validation
-    if (!username || !email || !password) {
+    if (!username) {
       setErrors("All fields are required!");
       return;
     }
 
     setErrors("");
     alert("Form submitted successfully ✅");
-    console.log({ username, email, password });
+    console.log({ username});
+
+    if (!password) {
+      setErrors("All fields are required!");
+      return;
+    }
+
+    setErrors("");
+    alert("Form submitted successfully ✅");
+    console.log({ password});
+  
+     if (!email) {
+      setErrors("All fields are required!");
+      return;
+    }
+
+    setErrors("");
+    alert("Form submitted successfully ✅");
+    console.log({ email});
+
   };
+
+   
+
+ 
+  
+
+   
 
   return (
     <form onSubmit={handleSubmit}>
