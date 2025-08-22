@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TodoList from "./components/TodoList";
+import TodoList from "../components/TodoList";
 
 describe("TodoList Component", () => {
   test("renders initial todos", () => {
@@ -11,11 +11,11 @@ describe("TodoList Component", () => {
 
   test("adds a new todo", () => {
     render(<TodoList />);
-    const input = screen.getByPlaceholderText("Add a new todo");
-    const button = screen.getByText("Add");
+    const input = screen.getByTestId("todo-input");
+    const addButton = screen.getByText("Add");
 
     fireEvent.change(input, { target: { value: "New Todo" } });
-    fireEvent.click(button);
+    fireEvent.click(addButton);
 
     expect(screen.getByText("New Todo")).toBeInTheDocument();
   });
@@ -24,19 +24,19 @@ describe("TodoList Component", () => {
     render(<TodoList />);
     const todoItem = screen.getByText("Learn React");
 
-    // initially not completed
+    // Initially not completed
     expect(todoItem).toHaveStyle("text-decoration: none");
 
     fireEvent.click(todoItem);
 
-    // toggled to completed
+    // Now completed
     expect(todoItem).toHaveStyle("text-decoration: line-through");
   });
 
   test("deletes a todo", () => {
     render(<TodoList />);
     const todoItem = screen.getByText("Learn React");
-    const deleteButton = screen.getAllByText("Delete")[0];
+    const deleteButton = screen.getAllByTestId("delete-button")[0];
 
     fireEvent.click(deleteButton);
 
